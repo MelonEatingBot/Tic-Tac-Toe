@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import {checkGameState, endBoardState, getBotDecision} from './functions';
 
@@ -43,9 +43,22 @@ function App() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [moves, setMoves] = useState(Array(9).fill(-1));
   const [currentPlayer, setCurrentPlayer] = useState("O");
+  const [botPlayer, setBotPlayer] = useState("X");
+  const [gameEnd, setGameEnd] = useState(false);
   const [singlePlayerMode, setSinglePlayerMode] = useState(true);
   
   const click = (i: number) => {
+    play(i);
+  };
+
+  const botMove = () => {
+    if (singlePlayerMode) {
+      let botDecision = getBotDecision(board, currentPlayer, moves);
+      play(botDecision);
+    }
+  };
+
+  const play = (i: number) => {
     let boardCopy = board;
     let movesCopy = moves;
     boardCopy[i] = currentPlayer;
@@ -58,26 +71,19 @@ function App() {
       else
         setCurrentPlayer("O");
     }
-    else
+    else{
       boardCopy = endBoardState(boardCopy, gameState[1]);
+      setGameEnd(true);
+    } 
     setBoard(boardCopy);
-    if (singlePlayerMode) {
-      let botDecision = getBotDecision(board, currentPlayer, moves);
-      boardCopy[botDecision] = currentPlayer;
-      movesCopy[movesCopy.findIndex((x: number) => x===-1)] = botDecision;
-      setMoves(movesCopy);
-      gameState = checkGameState(board);
-      if (!gameState[0]) {
-        if (currentPlayer === "O")
-          setCurrentPlayer("X");
-        else
-          setCurrentPlayer("O");
-      }
-      else
-        boardCopy = endBoardState(boardCopy, gameState[1]);
-      setBoard(boardCopy);
-    }
   };
+
+  useEffect(
+    () => {
+      if (singlePlayerMode && currentPlayer===botPlayer && !gameEnd)
+        botMove();
+    }
+  );
 
   return (
     <div className="App">
