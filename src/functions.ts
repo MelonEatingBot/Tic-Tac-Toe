@@ -58,10 +58,12 @@ function getBotDecision(board: string[], currentPlayer: string, moves: number[])
         else if ([1,3,5,7].includes(moves[0])) {
             let spots = getAvailableSpots(board);
             spots.splice(spots.indexOf(8-moves[0]), 1);
+            console.log(spots);
             return spots[Math.floor(Math.random() * spots.length)];
         }
         else {
             let spots = getAvailableSpots(board);
+            console.log(spots);
             return spots[Math.floor(Math.random() * spots.length)];
         }
     }
@@ -76,8 +78,9 @@ function getBotDecision(board: string[], currentPlayer: string, moves: number[])
     
     if (moveNumber === 3) {
         if (moves[0] === 4 && moves[1]+moves[2] === 8) {
-            let spots = [0,2,6,8].splice([0,2,6,8].indexOf(moves[1]), 1);
-            spots = spots.splice(spots.indexOf(moves[2], 1));
+            let spots = [0,2,6,8];
+            spots.splice([0,2,6,8].indexOf(moves[1]), 1);
+            spots.splice(spots.indexOf(moves[2]), 1);
             return spots[Math.floor(Math.random() * spots.length)];
         }
         else if ([0,2,6,8].includes(moves[0]) && moves[0]+moves[2] === 8)
@@ -128,12 +131,13 @@ function getSpotForSide(board: string[], opponent: string): number[] {
     let allLines: number[][] = getWinConditions().slice(0,6);
     allLines = allLines.filter((lines: number[]) => (lines.map((x: number) => board[x]).includes(opponent)));
     let spots = allLines.flat().filter((value, index, self) => self.indexOf(value) === index);
+    spots = spots.filter((x: number) => !board[x]);
     return spots;
 }
 
 function getAvailableSpots(board: string[]): number[] {
     let spots: number[] = [0,1,2,3,4,5,6,7,8];
-    spots = spots.filter((x: number) => board[x]);
+    spots = spots.filter((x: number) => !board[x]);
     return spots;
 }
 
