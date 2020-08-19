@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Tic-Tac-Toe/static/css/main.197108ac.chunk.css",
+    "main.js": "/Tic-Tac-Toe/static/js/main.c98f7b3a.chunk.js",
+    "main.js.map": "/Tic-Tac-Toe/static/js/main.c98f7b3a.chunk.js.map",
+    "runtime-main.js": "/Tic-Tac-Toe/static/js/runtime-main.49965c0b.js",
+    "runtime-main.js.map": "/Tic-Tac-Toe/static/js/runtime-main.49965c0b.js.map",
+    "static/js/2.222e53e6.chunk.js": "/Tic-Tac-Toe/static/js/2.222e53e6.chunk.js",
+    "static/js/2.222e53e6.chunk.js.map": "/Tic-Tac-Toe/static/js/2.222e53e6.chunk.js.map",
+    "index.html": "/Tic-Tac-Toe/index.html",
+    "precache-manifest.06fa85b58d3b2fe84e2fc146d0805780.js": "/Tic-Tac-Toe/precache-manifest.06fa85b58d3b2fe84e2fc146d0805780.js",
+    "service-worker.js": "/Tic-Tac-Toe/service-worker.js",
+    "static/css/main.197108ac.chunk.css.map": "/Tic-Tac-Toe/static/css/main.197108ac.chunk.css.map",
+    "static/js/2.222e53e6.chunk.js.LICENSE.txt": "/Tic-Tac-Toe/static/js/2.222e53e6.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/Tic-Tac-Toe/static/media/wood-pattern.02464a71.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.49965c0b.js",
+    "static/js/2.222e53e6.chunk.js",
+    "static/css/main.197108ac.chunk.css",
+    "static/js/main.c98f7b3a.chunk.js"
+  ]
+}
